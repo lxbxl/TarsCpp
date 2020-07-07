@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Tencent is pleased to support the open source community by making Tars available.
  *
  * Copyright (C) 2016THL A29 Limited, a Tencent company. All rights reserved.
@@ -43,12 +43,13 @@ typedef short   Short;
 typedef float   Float;
 typedef double  Double;
 typedef int     Int32;
+struct TarsStructBase;
 
 typedef unsigned char   UInt8;
 typedef unsigned short  UInt16;
 typedef unsigned int    UInt32;
 
-#if __WORDSIZE == 64 || defined _WIN64
+#if __WORDSIZE == 64
 typedef long    Int64;
 #else
 typedef long long   Int64;
@@ -72,7 +73,7 @@ typedef long long   Int64;
     | (((x) & 0x000000000000ff00ull) << 40)                     \
     | (((x) & 0x00000000000000ffull) << 56))
 */
-#ifdef __APPLE__
+#if (defined(__APPLE__) || defined(_WIN32))
 #   ifndef __LITTLE_ENDIAN
 #       define __LITTLE_ENDIAN 1234
 #   endif

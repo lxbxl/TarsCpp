@@ -198,11 +198,12 @@ public:
      * @param buff
      * @return
      */
-    int submit(const string &method, const string &path, const map<string, string> &header, const vector<char> &buff);
+//    int submit(const string &method, const string &path, const map<string, string> &header, const vector<char> &buff);
+	int submit(const TC_HttpRequest &request);
 
-    /**
-     * @brief response
-     */
+	/**
+	 * @brief response
+	 */
     std::unordered_map<int, shared_ptr<TC_HttpResponse>> &responses() { return _responses; }
 
     /** 
@@ -214,11 +215,13 @@ private:
 
     /**
      * 收到的响应
+	 * Responses received
      */
     std::unordered_map<int, shared_ptr<TC_HttpResponse>> _responses;
 
     /**
      * 收到的完整响应
+	 * Complete response received
      */
     std::unordered_map<int, shared_ptr<TC_HttpResponse>> _doneResponses;
 };
